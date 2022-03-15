@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "380638079548",
+    "project_id": "smart-tera",
+    "storage_bucket": "smart-tera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380638079548:android:60189400adb908bcc8f139",
+        "android_client_info": {
+          "package_name": "com.example.smart_room"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380638079548-eqg6vi63qm5au2ll5cccm9bd5o5rvn6l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_room",
+            "certificate_hash": "1ac01c64c70aeab08d7c7e7e9f23d4ccbb5608a5"
+          }
+        },
+        {
+          "client_id": "380638079548-0tkilouvrehi3ijbl0c1kkhpsh0v23up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbbh0QQxwejqKNVYapf0aSIbsna96eyYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380638079548-0tkilouvrehi3ijbl0c1kkhpsh0v23up.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
