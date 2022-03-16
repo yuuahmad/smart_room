@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smart_room">
    <application
-        android:label="smart_room"
+        android:label="Smart Room ITERA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
