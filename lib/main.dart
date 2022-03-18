@@ -7,10 +7,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:smart_room/screen/authentifikasi/sign_in_page.dart';
 import 'package:smart_room/screen/cara_pakai.dart';
 import 'package:smart_room/screen/home_page.dart';
+import 'package:smart_room/screen/main_firestore.dart';
 import 'package:smart_room/screen/monitoring.dart';
 import 'package:smart_room/screen/pengaturan.dart';
 import 'package:smart_room/screen/semua_device.dart';
 import 'package:smart_room/screen/tentang.dart';
+import 'package:smart_room/service/coba_firebase_firestore.dart';
 import 'package:smart_room/service/firebase_auth.dart';
 import 'firebase_options.dart';
 
@@ -22,9 +24,7 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       Provider<AuthService>(create: (_) => AuthService(FirebaseAuth.instance)),
-      StreamProvider(
-          create: (context) => context.read<AuthService>().keadaanUser,
-          initialData: null)
+      StreamProvider(create: (context) => context.read<AuthService>().keadaanUser, initialData: null)
     ],
     child: MyApp(),
   ));
@@ -42,6 +42,8 @@ class MyApp extends StatelessWidget {
           '/caraPakai': (context) => CaraPakai(),
           '/tentang': (context) => Tentang(),
           '/pengaturan': (context) => Pengaturan(),
+          '/cobaFirestore': (context) => CobaFirebaseFirestore(),
+          '/mainFirestore': (context) => MainFirestore(),
         },
         theme: ThemeData(
             appBarTheme: AppBarTheme(color: Color.fromARGB(255, 195, 165, 71)),

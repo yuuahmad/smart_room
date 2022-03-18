@@ -5,6 +5,7 @@ import 'package:smart_room/components/form_biasa.dart';
 import 'package:smart_room/service/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_room/service/firebase_firestore.dart';
 
 class SignInPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -21,12 +22,19 @@ class SignInPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
               margin: EdgeInsets.fromLTRB(0, ukuran.height * 0.2, 0, 20),
-              child: Image(
-                  image: AssetImage('images/tampilan ikon round fix.png'),
-                  height: ukuran.height * 0.2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image(image: AssetImage('images/tampilan ikon round fix.png'), height: ukuran.height * 0.18),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Text("x", style: TextStyle(fontSize: 60, color: Colors.black38)),
+                  ),
+                  Image(image: AssetImage('images/logo itera.png'), height: ukuran.height * 0.18),
+                ],
+              ),
             ),
             FormBiasa(
               formBiasaKontroller: emailController,

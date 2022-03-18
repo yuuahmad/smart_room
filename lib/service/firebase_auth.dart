@@ -13,12 +13,10 @@ class AuthService {
 
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
     if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
@@ -26,8 +24,7 @@ class AuthService {
       );
 
       try {
-        final UserCredential userCredential =
-            await auth.signInWithCredential(credential);
+        final UserCredential userCredential = await auth.signInWithCredential(credential);
 
         user = userCredential.user;
       } on FirebaseAuthException catch (e) {
@@ -40,26 +37,21 @@ class AuthService {
         // handle the error here
       }
     }
-
     return user;
   }
 
-  Future<String?> masukApp(
-      {required String inputemail, required String inputpass}) async {
+  Future<String?> masukApp({required String inputemail, required String inputpass}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: inputemail, password: inputpass);
+      await _firebaseAuth.signInWithEmailAndPassword(email: inputemail, password: inputpass);
       return "berhasil masuk";
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
   }
 
-  Future<String?> daftarApp(
-      {required String inputemail, required String inputpass}) async {
+  Future<String?> daftarApp({required String inputemail, required String inputpass}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: inputemail, password: inputpass);
+      await _firebaseAuth.signInWithEmailAndPassword(email: inputemail, password: inputpass);
       return "berhasil daftar";
     } on FirebaseAuthException catch (e) {
       return e.message;

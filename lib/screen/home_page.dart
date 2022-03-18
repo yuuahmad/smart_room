@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_room/components/bawah_appbar.dart';
@@ -55,13 +56,25 @@ class HomePage extends StatelessWidget {
                 iconTile: Icons.settings,
                 judulTile: "Pengaturan",
               ),
-              Divider(),
+              ListTileSaya(
+                keHalaman: '/cobaFirestore',
+                iconTile: Icons.format_list_numbered,
+                judulTile: "Coba Firestore",
+              ),
+              ListTileSaya(
+                keHalaman: '/mainFirestore',
+                iconTile: Icons.car_rental,
+                judulTile: "Main Firestore",
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Divider(thickness: 2),
+              ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.resolveWith<Color?>(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed)) {
                             return warnaSekunder.withOpacity(0.5);
@@ -100,11 +113,7 @@ class ListTileSaya extends StatelessWidget {
   final IconData iconTile;
   final String keHalaman;
 
-  const ListTileSaya(
-      {Key? key,
-      required this.judulTile,
-      required this.iconTile,
-      required this.keHalaman})
+  const ListTileSaya({Key? key, required this.judulTile, required this.iconTile, required this.keHalaman})
       : super(key: key);
 
   @override
