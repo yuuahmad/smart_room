@@ -5,8 +5,8 @@ import 'package:smart_room/components/form_biasa.dart';
 import 'package:smart_room/service/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_room/service/firebase_firestore.dart';
 
+// ini adalah halaman sign in yang ditampilkan pada awal masuk app
 class SignInPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -64,6 +64,17 @@ class SignInPage extends StatelessWidget {
                 AuthService.signInWithGoogle();
               },
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("anda belum memiliki akun?"),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signUp');
+                    },
+                    child: Text("daftar disini"))
+              ],
+            )
           ],
         ),
       ),

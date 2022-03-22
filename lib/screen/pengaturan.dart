@@ -34,9 +34,7 @@ class _PengaturanState extends State<Pengaturan> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  dapatkanUrl != null
-                      ? ClipOval(child: Image(image: NetworkImage(dapatkanUrl)))
-                      : Text("no photo"),
+                  dapatkanUrl != null ? ClipOval(child: Image(image: NetworkImage(dapatkanUrl))) : Text("no photo"),
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
@@ -79,6 +77,13 @@ class _PengaturanState extends State<Pengaturan> {
                 thickness: 3,
                 color: Colors.black45,
               ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/pengaturanAkun');
+              },
+              title: Text("Pengaturan Akun"),
+              trailing: Icon(Icons.person),
             ),
             ListTile(
               onTap: () {},

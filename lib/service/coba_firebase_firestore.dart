@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // Import the firebase_core and cloud_firestore plugin
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_room/components/bawah_appbar.dart';
+import 'package:smart_room/components/card_quick_setting.dart';
 
 class CobaFirebaseFirestore extends StatefulWidget {
   const CobaFirebaseFirestore({Key? key}) : super(key: key);
@@ -44,22 +44,18 @@ class _QuickSettingFirestoreState extends State<QuickSettingFirestore> {
     String? dapatkanUID = firebaseUser?.uid;
 
     return FutureBuilder<DocumentSnapshot>(
-      future:
-          FirebaseFirestore.instance.collection('users').doc(dapatkanUID).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+      future: FirebaseFirestore.instance.collection('users').doc(dapatkanUID).get(),
+      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text("terjadi kesalahan");
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
           List daftarDevice = data['device_dimiliki'];
           return ListView.builder(
             itemCount: daftarDevice.length,
             itemBuilder: (context, i) {
-              return ListTile(
-                  title: CardQuickSetting(judulQuickSetting: daftarDevice[i]));
+              return ListTile(title: CardQuickSetting(judulQuickSetting: daftarDevice[i]));
             },
           );
         }

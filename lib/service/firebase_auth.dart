@@ -51,7 +51,7 @@ class AuthService {
 
   Future<String?> daftarApp({required String inputemail, required String inputpass}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(email: inputemail, password: inputpass);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: inputemail, password: inputpass);
       return "berhasil daftar";
     } on FirebaseAuthException catch (e) {
       return e.message;
