@@ -20,7 +20,7 @@ class BawahAppbar extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(top: ukuran.height * 0.025),
-      margin: EdgeInsets.only(bottom: 10),
+      margin: EdgeInsets.only(bottom: 5),
       width: double.infinity,
       decoration: BoxDecoration(
           color: warnaPrimer,

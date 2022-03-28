@@ -9,7 +9,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_room/components/bawah_appbar.dart';
-import 'package:smart_room/components/card_quick_setting.dart';
+import 'package:smart_room/components/card_quick_monitoring_rtbd.dart';
+// import 'package:smart_room/components/card_quick_setting.dart';
+import 'package:smart_room/components/card_quick_setting_rtbd.dart';
 import 'package:smart_room/components/kontanta_warna.dart';
 import 'package:smart_room/service/firebase_auth.dart';
 
@@ -68,12 +70,12 @@ class _HomePageState extends State<HomePage> {
     // });
 
     return Scaffold(
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ScanBarcode()));
-        //   },
-        //   child: Icon(Icons.add),
-        // ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _scan(tampilkanUID!);
+          },
+          child: Icon(Icons.camera_alt),
+        ),
         // kode utuk drawer bagian samping. kalau dilihat sekilas memang ruwet
         // karena memang ruwet pada dasarnya
         drawer: Drawer(
@@ -126,6 +128,11 @@ class _HomePageState extends State<HomePage> {
                 iconTile: Icons.car_rental,
                 judulTile: "Main Firestore",
               ),
+              ListTileSaya(
+                keHalaman: '/mainRtbd',
+                iconTile: Icons.card_giftcard,
+                judulTile: "Main RTBD",
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(thickness: 2),
@@ -173,7 +180,6 @@ class _HomePageState extends State<HomePage> {
                   return Text("loading");
                 },
               ),
-              // awal dari list yang banyak
               StreamBuilder<DocumentSnapshot>(
                 stream: users,
                 builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -194,26 +200,33 @@ class _HomePageState extends State<HomePage> {
                   if (daftarDevice != null && daftarDevice.isNotEmpty) {
                     return Column(
                         children: daftarDevice
-                            .map((i) => CardQuickSetting(
-                                  judulQuickSetting: i,
+                            .map((i) => Column(
+                                  children: [
+                                    CardQuickSettingRtbd(
+                                      judulQuickSettingRtbd: i,
+                                    ),
+                                    CardQuickMonitoringRtbd(judulQuickMonitoringRtbd: i)
+                                  ],
                                 ))
                             .toList());
                   } else {
-                    return Container(
-                        margin: EdgeInsets.all(120),
-                        // padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(
-                          "oops!?!? sepertinya anda belum memiliki device, scan barcode yang tertempel pada alat untuk menambahkannya",
-                          style: TextStyle(fontSize: 16),
-                        ));
+                    return Center(
+                      child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          // padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            "oops!?!? sepertinya anda belum memiliki device, scan barcode yang tertempel pada alat untuk menambahkannya",
+                            style: TextStyle(fontSize: 16),
+                          )),
+                    );
                   }
                 },
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    _scan(tampilkanUID!);
-                  },
-                  child: Text("scan dan tambah"))
+              // ElevatedButton(
+              //     onPressed: () {
+              //       _scan(tampilkanUID!);
+              //     },
+              //     child: Text("scan dan tambah"))
             ],
           ),
         ));

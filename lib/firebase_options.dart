@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     // ignore: missing_enum_constant_in_switch
     switch (defaultTargetPlatform) {
@@ -42,6 +39,16 @@ class DefaultFirebaseOptions {
       'DefaultFirebaseOptions are not supported for this platform.',
     );
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCcOvo8rj3IqSKNOLWUX7KBSqfTlFi8EwI',
+    appId: '1:380638079548:web:2cebe8f70e513e1dc8f139',
+    messagingSenderId: '380638079548',
+    projectId: 'smart-tera',
+    authDomain: 'smart-tera.firebaseapp.com',
+    storageBucket: 'smart-tera.appspot.com',
+    measurementId: 'G-YFBW960BCE',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCbbh0QQxwejqKNVYapf0aSIbsna96eyYM',

@@ -10,12 +10,13 @@ import 'package:smart_room/screen/authentifikasi/sign_up_page.dart';
 import 'package:smart_room/screen/cara_pakai.dart';
 import 'package:smart_room/screen/home_page.dart';
 import 'package:smart_room/screen/main_firestore.dart';
+import 'package:smart_room/screen/main_rtbd.dart';
 import 'package:smart_room/screen/monitoring.dart';
 import 'package:smart_room/screen/pengaturan.dart';
 import 'package:smart_room/screen/semua_device.dart';
 import 'package:smart_room/screen/sub_pengturan/pengaturan_akun.dart';
 import 'package:smart_room/screen/tentang.dart';
-import 'package:smart_room/service/coba_firebase_firestore.dart';
+import 'package:smart_room/screen/coba_firebase_firestore.dart';
 import 'package:smart_room/service/firebase_auth.dart';
 import 'firebase_options.dart';
 
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
           '/mainFirestore': (context) => MainFirestore(),
           '/signUp': (context) => SignUpPage(),
           '/pengaturanAkun': (context) => PengaturanAkun(),
+          '/mainRtbd': (context) => MainRtbd(),
         },
         theme: ThemeData(
             appBarTheme: AppBarTheme(color: Color.fromARGB(255, 195, 165, 71)),
